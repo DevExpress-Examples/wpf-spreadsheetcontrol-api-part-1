@@ -1,4 +1,4 @@
-﻿<dx:ThemedWindow x:Class="SpreadsheetControl_WPF_API.MainWindow" Title="MainWindow" Height="600" Width="800" 
+<dx:ThemedWindow x:Class="SpreadsheetControl_WPF_API.MainWindow" Title="MainWindow" Height="600" Width="800" 
     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
