@@ -1,3 +1,15 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [MainWindow.xaml.cs](./CS/SpreadsheetControl_WPF_API/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/SpreadsheetControl_WPF_API/MainWindow.xaml.vb))
+* [CellActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/CellActions.cs) (VB: [CellActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/CellActions.vb))
+* [FormattingActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/FormattingActions.cs) (VB: [FormattingActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/FormattingActions.vb))
+* [FormulaActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/FormulaActions.cs) (VB: [FormulaActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/FormulaActions.vb))
+* [ImportExportActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/ImportExportActions.cs) (VB: [ImportExportActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/ImportExportActions.vb))
+* [PrintingActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/PrintingActions.cs) (VB: [PrintingActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/PrintingActions.vb))
+* [RowAndColumnActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/RowAndColumnActions.cs) (VB: [RowAndColumnActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/RowAndColumnActions.vb))
+* [WorksheetActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/WorksheetActions.cs) (VB: [WorksheetActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/WorksheetActions.vb))
+<!-- default file list end -->
 # WPF SpreadsheetControl API - Part 1
 
 
