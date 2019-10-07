@@ -22,8 +22,6 @@
 <p>- Format cells (set cell font, colors, alignment, borders, number format, etc.)</p>
 <p>- Export the workbook to PDF</p>
 <p>- Print the workbook</p>
-<br> See also:<br><a href="https://www.devexpress.com/Support/Center/p/E4944">WPF SpreadsheetControl API - Part 2</a>
-
+<br> See also:<br><a href="https://www.devexpress.com/Support/Center/p/E4944">WPF SpreadsheetControl API - Part 2</a></br>
+<a href="https://github.com/DevExpress-Examples/wpf-spreadsheetcontrol-api-part-3-t289419">WPF SpreadsheetControl API - Part 3</a>
 <br/>
-
-
