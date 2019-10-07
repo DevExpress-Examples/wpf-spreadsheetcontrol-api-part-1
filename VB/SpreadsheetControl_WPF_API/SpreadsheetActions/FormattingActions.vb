@@ -120,11 +120,11 @@ Namespace SpreadsheetControl_WPF_API
                 ' Specify text alignment in the cell. 
                 cell.Alignment.Vertical = SpreadsheetVerticalAlignment.Center
                 cell.Alignment.Horizontal = SpreadsheetHorizontalAlignment.Center
-'                #End Region ' #CellFormatting
+                '                #End Region ' #CellFormatting
 
-'                #Region "#RangeFormatting"
+                '                #Region "#RangeFormatting"
                 ' Access the range of cells to be formatted.
-                Dim range As Range = worksheet.Range("C3:E6")
+                Dim range As CellRange = worksheet.Range("C3:E6")
 
                 ' Begin updating of the range formatting. 
                 Dim rangeFormatting As Formatting = range.BeginUpdateFormatting()
@@ -278,7 +278,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Cells("A1").FillColor = Color.Yellow
 
                 ' Format a range of cells.
-                Dim range As Range = worksheet.Range("C3:H10")
+                Dim range As CellRange = worksheet.Range("C3:H10")
                 Dim rangeFormatting As Formatting = range.BeginUpdateFormatting()
                 rangeFormatting.Font.Color = Color.Blue
                 rangeFormatting.Fill.BackgroundColor = Color.LightBlue
@@ -367,7 +367,7 @@ Namespace SpreadsheetControl_WPF_API
             Try
                 Dim worksheet As Worksheet = workbook.Worksheets(0)
 
-                Dim range As Range = worksheet.Range("A1:A4")
+                Dim range As CellRange = worksheet.Range("A1:A4")
                 range.ColumnWidthInCharacters = 30
                 workbook.Unit = DevExpress.Office.DocumentUnit.Inch
                 range.RowHeight = 1
@@ -423,20 +423,20 @@ Namespace SpreadsheetControl_WPF_API
                 cellC4.Borders.SetAllBorders(Color.Orange, BorderLineStyle.MediumDashed)
                 Dim cellD6 As Cell = worksheet.Cells("D6")
                 cellD6.Borders.SetOutsideBorders(Color.Gold, BorderLineStyle.Double)
-'                #End Region ' #CellBorders
+                '                #End Region ' #CellBorders
 
-'                #Region "#CellRangeBorders"
+                '                #Region "#CellRangeBorders"
                 ' Set all borders for the range of cells in one step.
-                Dim range1 As Range = worksheet.Range("B8:F13")
+                Dim range1 As CellRange = worksheet.Range("B8:F13")
                 range1.Borders.SetAllBorders(Color.Green, BorderLineStyle.Double)
 
                 ' Set all inside and outside borders separately for the range of cells.
-                Dim range2 As Range = worksheet.Range("C15:F18")
+                Dim range2 As CellRange = worksheet.Range("C15:F18")
                 range2.SetInsideBorders(Color.SkyBlue, BorderLineStyle.MediumDashed)
                 range2.Borders.SetOutsideBorders(Color.DeepSkyBlue, BorderLineStyle.Medium)
 
                 ' Set all horizontal and vertical borders separately for the range of cells.
-                Dim range3 As Range = worksheet.Range("D21:F23")
+                Dim range3 As CellRange = worksheet.Range("D21:F23")
                 Dim range3Formatting As Formatting = range3.BeginUpdateFormatting()
                 Dim range3Borders As Borders = range3Formatting.Borders
                 range3Borders.InsideHorizontalBorders.LineStyle = BorderLineStyle.MediumDashDot
@@ -446,7 +446,7 @@ Namespace SpreadsheetControl_WPF_API
                 range3.EndUpdateFormatting(range3Formatting)
 
                 ' Set each particular border for the range of cell. 
-                Dim range4 As Range = worksheet.Range("E25:F26")
+                Dim range4 As CellRange = worksheet.Range("E25:F26")
                 Dim range4Formatting As Formatting = range4.BeginUpdateFormatting()
                 Dim range4Borders As Borders = range4Formatting.Borders
                 range4Borders.SetOutsideBorders(Color.Black, BorderLineStyle.Thick)

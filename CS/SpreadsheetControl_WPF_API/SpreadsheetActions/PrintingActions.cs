@@ -18,11 +18,11 @@ namespace SpreadsheetControl_WPF_API
             Worksheet worksheet = workbook.Worksheets[0];
 
             // Generate worksheet content - the simple multiplication table.
-            Range columnHeadings = worksheet.Range.FromLTRB(1,0,40,0);
+            CellRange columnHeadings = worksheet.Range.FromLTRB(1,0,40,0);
             columnHeadings.Formula = "=COLUMN() - 1";
-            Range rowHeadings = worksheet.Range.FromLTRB(0,1,0,40);
+            CellRange rowHeadings = worksheet.Range.FromLTRB(0,1,0,40);
             rowHeadings.Formula = "=ROW() - 1";
-            Range tableRange = worksheet.Range.FromLTRB(1,1,40,40);
+            CellRange tableRange = worksheet.Range.FromLTRB(1,1,40,40);
             tableRange.Formula = "=(ROW()-1)*(COLUMN()-1)";
 
             // Format headers of the multiplication table.

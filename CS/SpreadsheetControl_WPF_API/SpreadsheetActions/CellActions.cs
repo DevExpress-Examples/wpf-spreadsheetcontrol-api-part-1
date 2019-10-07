@@ -28,51 +28,51 @@ namespace SpreadsheetControl_WPF_API
 
                 #region #SimpleRange
                 // A range that includes cells from the top left cell (A1) to the bottom right cell (B5).
-                Range rangeA1B5 = worksheet["A1:B5"];
+                CellRange rangeA1B5 = worksheet["A1:B5"];
 
                 // A rectangular range that includes cells from the top left cell (C5) to the bottom right cell (E7).
-                Range rangeC5E7 = worksheet["C5:E7"];
+                CellRange rangeC5E7 = worksheet["C5:E7"];
 
                 // The C4:E7 cell range located in the "Sheet3" worksheet.
-                Range rangeSheet3C4E7 = workbook.Range["Sheet3!C4:E7"];
+                CellRange rangeSheet3C4E7 = workbook.Range["Sheet3!C4:E7"];
 
                 // A range that contains a single cell (E7).
-                Range rangeE7 = worksheet["E7"];
+                CellRange rangeE7 = worksheet["E7"];
 
                 // A range that includes the entire column A.
-                Range rangeColumnA = worksheet["A:A"];
+                CellRange rangeColumnA = worksheet["A:A"];
 
                 // A range that includes the entire row 5.
-                Range rangeRow5 = worksheet["5:5"];
+                CellRange rangeRow5 = worksheet["5:5"];
 
                 // A minimal rectangular range that includes all listed cells: C6, D9 and E7.
-                Range rangeC6D9E7 = worksheet.Range.Parse("C6:D9:E7");
+                CellRange rangeC6D9E7 = worksheet.Range.Parse("C6:D9:E7");
 
                 // A rectangular range whose left column index is 0, top row index is 0, 
                 // right column index is 3 and bottom row index is 2. This is the A1:D3 cell range.
-                Range rangeA1D3 = worksheet.Range.FromLTRB(0, 0, 3, 2);
+                CellRange rangeA1D3 = worksheet.Range.FromLTRB(0, 0, 3, 2);
 
                 // A range that includes the intersection of two ranges: C5:E10 and E9:G13. 
                 // This is the E9:E10 cell range.
-                Range rangeE9E10 = worksheet["C5:E10 E9:G13"];
+                CellRange rangeE9E10 = worksheet["C5:E10 E9:G13"];
 
                 // Create a defined name for the D20:G23 cell range.
                 worksheet.DefinedNames.Add("MyNamedRange", "Sheet1!$D$20:$G$23");
                 // Access a range by its defined name.
-                Range rangeD20G23 = worksheet["MyNamedRange"];
+                CellRange rangeD20G23 = worksheet["MyNamedRange"];
                 #endregion #SimpleRange
 
                 #region #ComplexRange
-                Range rangeA1D4 = worksheet["A1:D4"];
-                Range rangeD5E7 = worksheet["D5:E7"];
-                Range rangeRow11 = worksheet["11:11"];
-                Range rangeF7 = worksheet["F7"];
+                CellRange rangeA1D4 = worksheet["A1:D4"];
+                CellRange rangeD5E7 = worksheet["D5:E7"];
+                CellRange rangeRow11 = worksheet["11:11"];
+                CellRange rangeF7 = worksheet["F7"];
 
                 // Create a complex range using the Range.Union method.
-                Range complexRange1 = worksheet["A7:A9"].Union(rangeD5E7);
+                CellRange complexRange1 = worksheet["A7:A9"].Union(rangeD5E7);
 
                 // Create a complex range using the IRangeProvider.Union method.
-                Range complexRange2 = worksheet.Range.Union(new Range[] { rangeRow11, rangeA1D4, rangeF7 });
+                CellRange complexRange2 = worksheet.Range.Union(new CellRange[] { rangeRow11, rangeA1D4, rangeF7 });
 
                 // Fill the ranges with different colors.
                 complexRange1.FillColor = myColor1;
@@ -140,7 +140,7 @@ namespace SpreadsheetControl_WPF_API
 
                 #region #CellValueToFromObject
                 // Add data of different types to cells of the range.
-                Range sourceRange = worksheet["B1:B3"];
+                CellRange sourceRange = worksheet["B1:B3"];
                 sourceRange[0].Value = "Text";
                 sourceRange[1].Formula = "=PI()";
                 sourceRange[2].Value = DateTime.Now;
@@ -212,7 +212,7 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.Hyperlinks.Add(cell, "http://www.devexpress.com/", true, "DevExpress");
 
                 // Create a hyperlink to a cell range in a workbook.
-                Range range = worksheet.Range["C3:D4"];
+                CellRange range = worksheet.Range["C3:D4"];
                 Hyperlink cellHyperlink = worksheet.Hyperlinks.Add(range, "Sheet2!B2:E7", false, "Select Range");
                 cellHyperlink.TooltipText = "Click Me";
                 #endregion #AddHyperlink
@@ -315,7 +315,7 @@ namespace SpreadsheetControl_WPF_API
                 worksheet["A6"].Value = "Clear Cell Comments Only:";
 
                 // Specify initial content and formatting for cells.
-                Range sourceCells = worksheet["B2:D6"];
+                CellRange sourceCells = worksheet["B2:D6"];
                 sourceCells.Value = DateTime.Now;
                 sourceCells.Style = workbook.Styles[BuiltInStyleId.Accent3_40percent];
                 sourceCells.Font.Color = Color.LightSeaGreen;

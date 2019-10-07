@@ -28,51 +28,51 @@ Namespace SpreadsheetControl_WPF_API
 
                 '				#Region "#SimpleRange"
                 ' A range that includes cells from the top left cell (A1) to the bottom right cell (B5).
-                Dim rangeA1B5 As Range = worksheet("A1:B5")
+                Dim rangeA1B5 As CellRange = worksheet("A1:B5")
 
                 ' A rectangular range that includes cells from the top left cell (C5) to the bottom right cell (E7).
-                Dim rangeC5E7 As Range = worksheet("C5:E7")
+                Dim rangeC5E7 As CellRange = worksheet("C5:E7")
 
                 ' The C4:E7 cell range located in the "Sheet3" worksheet.
-                Dim rangeSheet3C4E7 As Range = workbook.Range("Sheet3!C4:E7")
+                Dim rangeSheet3C4E7 As CellRange = workbook.Range("Sheet3!C4:E7")
 
                 ' A range that contains a single cell (E7).
-                Dim rangeE7 As Range = worksheet("E7")
+                Dim rangeE7 As CellRange = worksheet("E7")
 
                 ' A range that includes the entire column A.
-                Dim rangeColumnA As Range = worksheet("A:A")
+                Dim rangeColumnA As CellRange = worksheet("A:A")
 
                 ' A range that includes the entire row 5.
-                Dim rangeRow5 As Range = worksheet("5:5")
+                Dim rangeRow5 As CellRange = worksheet("5:5")
 
                 ' A minimal rectangular range that includes all listed cells: C6, D9 and E7.
-                Dim rangeC6D9E7 As Range = worksheet.Range.Parse("C6:D9:E7")
+                Dim rangeC6D9E7 As CellRange = worksheet.Range.Parse("C6:D9:E7")
 
                 ' A rectangular range whose left column index is 0, top row index is 0, 
                 ' right column index is 3 and bottom row index is 2. This is the A1:D3 cell range.
-                Dim rangeA1D3 As Range = worksheet.Range.FromLTRB(0, 0, 3, 2)
+                Dim rangeA1D3 As CellRange = worksheet.Range.FromLTRB(0, 0, 3, 2)
 
                 ' A range that includes the intersection of two ranges: C5:E10 and E9:G13. 
                 ' This is the E9:E10 cell range.
-                Dim rangeE9E10 As Range = worksheet("C5:E10 E9:G13")
+                Dim rangeE9E10 As CellRange = worksheet("C5:E10 E9:G13")
 
                 ' Create a defined name for the D20:G23 cell range.
                 worksheet.DefinedNames.Add("MyNamedRange", "Sheet1!$D$20:$G$23")
                 ' Access a range by its defined name.
-                Dim rangeD20G23 As Range = worksheet("MyNamedRange")
+                Dim rangeD20G23 As CellRange = worksheet("MyNamedRange")
                 '				#End Region ' #SimpleRange
 
                 '				#Region "#ComplexRange"
-                Dim rangeA1D4 As Range = worksheet("A1:D4")
-                Dim rangeD5E7 As Range = worksheet("D5:E7")
-                Dim rangeRow11 As Range = worksheet("11:11")
-                Dim rangeF7 As Range = worksheet("F7")
+                Dim rangeA1D4 As CellRange = worksheet("A1:D4")
+                Dim rangeD5E7 As CellRange = worksheet("D5:E7")
+                Dim rangeRow11 As CellRange = worksheet("11:11")
+                Dim rangeF7 As CellRange = worksheet("F7")
 
                 ' Create a complex range using the Range.Union method.
-                Dim complexRange1 As Range = worksheet("A7:A9").Union(rangeD5E7)
+                Dim complexRange1 As CellRange = worksheet("A7:A9").Union(rangeD5E7)
 
                 ' Create a complex range using the IRangeProvider.Union method.
-                Dim complexRange2 As Range = worksheet.Range.Union(New Range() {rangeRow11, rangeA1D4, rangeF7})
+                Dim complexRange2 As CellRange = worksheet.Range.Union(New CellRange() {rangeRow11, rangeA1D4, rangeF7})
 
                 ' Fill the ranges with different colors.
                 complexRange1.FillColor = myColor1
@@ -134,9 +134,9 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Range("A1").ColumnWidthInCharacters= 31
                 worksheet.Range("B1:D5").ColumnWidthInCharacters = 12
 
-'                #Region "#CellValueToFromObject"
+                '                #Region "#CellValueToFromObject"
                 ' Add data of different types to cells of the range.
-                Dim sourceRange As Range = worksheet("B1:B3")
+                Dim sourceRange As CellRange = worksheet("B1:B3")
                 sourceRange(0).Value = "Text"
                 sourceRange(1).Formula = "=PI()"
                 sourceRange(2).Value = Date.Now
@@ -209,7 +209,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Hyperlinks.Add(cell, "http://www.devexpress.com/", True, "DevExpress")
 
                 ' Create a hyperlink to a cell range in a workbook.
-                Dim range As Range = worksheet.Range("C3:D4")
+                Dim range As CellRange = worksheet.Range("C3:D4")
                 Dim cellHyperlink As Hyperlink = worksheet.Hyperlinks.Add(range, "Sheet2!B2:E7", False, "Select Range")
                 cellHyperlink.TooltipText = "Click Me"
 '                #End Region ' #AddHyperlink
@@ -309,7 +309,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet("A6").Value = "Clear Cell Comments Only:"
 
                 ' Specify initial content and formatting for cells.
-                Dim sourceCells As Range = worksheet("B2:D6")
+                Dim sourceCells As CellRange = worksheet("B2:D6")
                 sourceCells.Value = Date.Now
                 sourceCells.Style = workbook.Styles(BuiltInStyleId.Accent3_40percent)
                 sourceCells.Font.Color = Color.LightSeaGreen
