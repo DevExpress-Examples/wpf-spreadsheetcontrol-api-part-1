@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetControl_WPF_API", "SpreadsheetControl_WPF_API\SpreadsheetControl_WPF_API.csproj", "{CED85B19-D636-41A3-86BE-19243BC1EB61}"
+# Visual Studio 16
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetControl_WPF_API", "SpreadsheetControl_WPF_API\SpreadsheetControl_WPF_API.Net5.csproj", "{CED85B19-D636-41A3-86BE-19243BC1EB61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
