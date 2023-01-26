@@ -4,7 +4,6 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SpreadsheetControl_WPF_API</RootNamespace>
     <AssemblyName>SpreadsheetControl_WPF_API</AssemblyName>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <Platforms>x86;AnyCPU</Platforms>
