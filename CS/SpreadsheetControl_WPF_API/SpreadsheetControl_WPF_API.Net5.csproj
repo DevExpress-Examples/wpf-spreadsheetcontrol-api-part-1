@@ -7,7 +7,6 @@
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <Platforms>x86;AnyCPU</Platforms>
-    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 	<GenerateRuntimeConfigDevFile>true</GenerateRuntimeConfigDevFile>
     <DefaultItemExcludes>obj*/**</DefaultItemExcludes>
   </PropertyGroup>
