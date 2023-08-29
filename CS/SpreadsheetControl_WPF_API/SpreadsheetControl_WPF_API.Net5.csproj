@@ -20,26 +20,26 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Charts.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Data" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Data.Desktop" Version="23.1.4" />
-    <PackageReference Include="DevExpress.DataVisualization.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Mvvm" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Office.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Pdf.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Printing.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.RichEdit.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.RichEdit.Export" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Spreadsheet.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Charts" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Grid.Core" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.NavBar" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Office" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Printing" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Reporting" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Ribbon" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Spreadsheet" Version="23.1.4" />
-    <PackageReference Include="DevExpress.Wpf.Themes.All" Version="23.1.4" />
+    <PackageReference Include="DevExpress.Charts.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Data" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Data.Desktop" Version="23.1.5" />
+    <PackageReference Include="DevExpress.DataVisualization.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Mvvm" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Office.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Pdf.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Printing.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.RichEdit.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.RichEdit.Export" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Spreadsheet.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Charts" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Grid.Core" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.NavBar" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Office" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Printing" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Reporting" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Ribbon" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Spreadsheet" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Wpf.Themes.All" Version="23.1.5" />
   </ItemGroup>
 </Project>
