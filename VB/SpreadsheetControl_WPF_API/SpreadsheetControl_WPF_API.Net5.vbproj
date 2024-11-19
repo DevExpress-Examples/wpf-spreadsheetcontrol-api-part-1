@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -42,26 +42,26 @@
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Charts.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Data" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Data.Desktop" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.DataVisualization.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Mvvm" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Office.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Pdf.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Printing.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.RichEdit.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.RichEdit.Export" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Spreadsheet.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Charts" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Grid.Core" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.NavBar" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Office" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Printing" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Reporting" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Ribbon" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Spreadsheet" Version="24.2.1-alpha-24207" />
-    <PackageReference Include="DevExpress.Wpf.Themes.All" Version="24.2.1-alpha-24207" />
+    <PackageReference Include="DevExpress.Charts.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Data" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Data.Desktop" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.DataVisualization.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Mvvm" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Office.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Pdf.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Printing.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.RichEdit.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.RichEdit.Export" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Spreadsheet.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Charts" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Grid.Core" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.NavBar" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Office" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Printing" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Reporting" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Ribbon" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Spreadsheet" Version="24.2.2-beta" />
+    <PackageReference Include="DevExpress.Wpf.Themes.All" Version="24.2.2-beta" />
   </ItemGroup>
 </Project>
