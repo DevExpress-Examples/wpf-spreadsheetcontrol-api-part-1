@@ -50,6 +50,7 @@ Namespace SpreadsheetControl_WPF_API
             examples(2).Items.Add(New SpreadsheetExample("Create, Edit and Copy Comments", CellActions.AddCommentAction))
             examples(2).Items.Add(New SpreadsheetExample("Copy Data Only, Style Only, or Data with Style", CellActions.CopyCellDataAndStyleAction))
             examples(2).Items.Add(New SpreadsheetExample("Merge/Split Cells", CellActions.MergeAndSplitCellsAction))
+            examples(2).Items.Add(New SpreadsheetExample("Place Image in a Cell", CellActions.PlaceImageInCellAction))
             examples(2).Items.Add(New SpreadsheetExample("Clear Cells", CellActions.ClearCellsAction))
 
             ' Add nodes to the "Formulas" group of examples. 
@@ -58,7 +59,9 @@ Namespace SpreadsheetControl_WPF_API
             examples(3).Items.Add(New SpreadsheetExample("Names in Formulas", FormulaActions.UseNamesInFormulasAction))
             examples(3).Items.Add(New SpreadsheetExample("Create Named Formulas", FormulaActions.CreateNamedFormulasAction))
             examples(3).Items.Add(New SpreadsheetExample("Functions in Formulas", FormulaActions.UseFunctionsInFormulasAction))
-            examples(3).Items.Add(New SpreadsheetExample("Shared and Array Formulas", FormulaActions.CreateSharedAndArrayFormulasAction))
+            examples(3).Items.Add(New SpreadsheetExample("Shared and Legacy Array Formulas", FormulaActions.CreateSharedAndArrayFormulasAction))
+            examples(3).Items.Add(New SpreadsheetExample("Dynamic Array Formulas", FormulaActions.CreateDynamicArrayFormulasAction))
+
 
             ' Add nodes to the "Formatting" group of examples.
             examples(4).Items.Add(New SpreadsheetExample("Create, Modify and Apply a Style", FormattingActions.CreateModifyApplyStyleAction))

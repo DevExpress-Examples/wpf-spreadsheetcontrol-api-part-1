@@ -1,10 +1,11 @@
-﻿using System;
-using DevExpress.Spreadsheet;
+﻿using DevExpress.Spreadsheet;
+using System;
 using System.Drawing;
 
 namespace SpreadsheetControl_WPF_API
 {
-    public static class FormulaActions {
+    public static class FormulaActions
+    {
         #region Actions
         public static Action<IWorkbook> UseConstantsAndCalculationOperatorsInFormulasAction = UseConstantsAndCalculationOperatorsInFormulas;
         public static Action<IWorkbook> R1C1ReferencesInFormulassAction = R1C1ReferencesInFormulas;
@@ -12,11 +13,15 @@ namespace SpreadsheetControl_WPF_API
         public static Action<IWorkbook> CreateNamedFormulasAction = CreateNamedFormulas;
         public static Action<IWorkbook> UseFunctionsInFormulasAction = UseFunctionsInFormulas;
         public static Action<IWorkbook> CreateSharedAndArrayFormulasAction = CreateSharedAndArrayFormulas;
+        public static Action<IWorkbook> CreateDynamicArrayFormulasAction = CreateDynamicArrayFormulas;
+
         #endregion
 
-        static void UseConstantsAndCalculationOperatorsInFormulas(IWorkbook workbook) {
+        static void UseConstantsAndCalculationOperatorsInFormulas(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 worksheet.Cells["A1"].Value = "Formula";
@@ -30,14 +35,17 @@ namespace SpreadsheetControl_WPF_API
                 workbook.Worksheets[0].Cells["B2"].Formula = "= (1+5)*6";
                 #endregion #ConstantsAndCalculationOperators
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void R1C1ReferencesInFormulas(IWorkbook workbook) {
+        static void R1C1ReferencesInFormulas(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 // Provide static data.
@@ -71,14 +79,17 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.Cells["D3"].Formula = "=SUM(R2C1:R11C1)";
                 #endregion #R1C1ReferencesInFormulas
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void UseNamesInFormulas(IWorkbook workbook) {
+        static void UseNamesInFormulas(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 CellRange dataRangeHeader = worksheet.Range["A1:C1"];
@@ -113,21 +124,24 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.Cells["F3"].Formula = "= SUM(myRange)";
                 #endregion #NamesInFormulas
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void CreateNamedFormulas(IWorkbook workbook) {
+        static void CreateNamedFormulas(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 workbook.Worksheets[0].Cells["A1"].Value = 2;
                 workbook.Worksheets[0].Cells["B2"].Value = 3;
                 workbook.Worksheets[0].Cells["C3"].Value = 4;
 
                 workbook.Worksheets[1].Range["A1:C1"].FillColor = Color.LightGray;
                 workbook.Worksheets[1].Range["A1:C1"].ColumnWidthInCharacters = 25;
-                
+
                 workbook.Worksheets[1].Cells["A1"].Value = "Formula Name";
                 workbook.Worksheets[1].Cells["B1"].Value = "Formula";
                 workbook.Worksheets[1].Cells["C1"].Value = "Formula Result";
@@ -160,14 +174,17 @@ namespace SpreadsheetControl_WPF_API
 
                 workbook.Worksheets.ActiveWorksheet = workbook.Worksheets["Sheet2"];
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void UseFunctionsInFormulas(IWorkbook workbook) {
+        static void UseFunctionsInFormulas(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
                 // Provide static data.
                 worksheet.Cells["A1"].Value = "Data";
@@ -186,7 +203,7 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.Cells["B7"].Value = @"'=UPPER(""formula"")";
 
                 worksheet.Cells["C1"].Value = "Formula";
-                
+
                 worksheet.Range["A1:C1"].FillColor = Color.LightGray;
                 worksheet.Range["A1:C7"].Alignment.Horizontal = SpreadsheetHorizontalAlignment.Left;
 
@@ -214,14 +231,17 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.Cells["C7"].Formula = @"=UPPER(""formula"")";
                 #endregion #FunctionsInFormulas
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void CreateSharedAndArrayFormulas(IWorkbook workbook) {
+        static void CreateSharedAndArrayFormulas(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 worksheet.Range["A1:D1"].ColumnWidthInCharacters = 10;
@@ -248,7 +268,7 @@ namespace SpreadsheetControl_WPF_API
                 // Create an array formula that multiplies values contained in the cell range A2 through A11 
                 // by the corresponding cells in the range B2 through B11, 
                 // and displays the results in cells C2 through C11.
-                worksheet.Range.FromLTRB(2,1,2,10).ArrayFormula = "=A2:A11*B2:B11";
+                worksheet.Range.FromLTRB(2, 1, 2, 10).ArrayFormula = "=A2:A11*B2:B11";
 
                 // Create an array formula that multiplies values contained in the cell range C2 through C11 by 2
                 // and displays the results in cells D2 through D11.
@@ -260,16 +280,45 @@ namespace SpreadsheetControl_WPF_API
 
                 // Re-dimension an array formula range:
                 // delete the array formula and create a new range with the same formula.
-                if (worksheet.Cells["C13"].HasArrayFormula) {
+                if (worksheet.Cells["C13"].HasArrayFormula)
+                {
                     string af = worksheet.Cells["C13"].ArrayFormula;
                     worksheet.Cells["C13"].GetArrayFormulaRange().ArrayFormula = string.Empty;
-                    worksheet.Range.FromLTRB(2,1,2,10).ArrayFormula = af;
+                    worksheet.Range.FromLTRB(2, 1, 2, 10).ArrayFormula = af;
                 }
                 #endregion #ArrayFormulas
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
+        }
+
+        static void CreateDynamicArrayFormulas(IWorkbook workbook)
+        {
+            workbook.BeginUpdate();
+            try
+            {
+                #region #DynamicFormulas
+                Worksheet worksheet = workbook.Worksheets[0];
+
+                worksheet.Range["A1"].ColumnWidthInCharacters = 20;
+                worksheet.Range["A1"].Alignment.Horizontal = SpreadsheetHorizontalAlignment.Center;
+                worksheet.Range["A1"].FillColor = Color.LightGray;
+
+                worksheet.Range["A1"].Value = "Dynamic Array Formulas:";
+
+
+                // Insert dynamic array formulas
+                worksheet["A2"].DynamicArrayFormulaInvariant = "={\"Red\",\"Green\",\"Orange\",\"Blue\"}";
+                worksheet.DynamicArrayFormulas.Add(worksheet["B1"], "=LEN(A2:D2)");
+                #endregion #DynamicFormulas
+            }
+            finally
+            {
+                workbook.EndUpdate();
+            }
+
         }
     }
 }

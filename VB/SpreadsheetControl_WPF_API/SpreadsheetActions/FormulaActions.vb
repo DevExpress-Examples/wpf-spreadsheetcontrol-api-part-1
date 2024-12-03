@@ -1,6 +1,5 @@
-﻿Imports System
+﻿Imports System.Drawing
 Imports DevExpress.Spreadsheet
-Imports System.Drawing
 
 Namespace SpreadsheetControl_WPF_API
     Public NotInheritable Class FormulaActions
@@ -8,14 +7,16 @@ Namespace SpreadsheetControl_WPF_API
         Private Sub New()
         End Sub
 
-        #Region "Actions"
+#Region "Actions"
         Public Shared UseConstantsAndCalculationOperatorsInFormulasAction As Action(Of IWorkbook) = AddressOf UseConstantsAndCalculationOperatorsInFormulas
         Public Shared R1C1ReferencesInFormulassAction As Action(Of IWorkbook) = AddressOf R1C1ReferencesInFormulas
         Public Shared UseNamesInFormulasAction As Action(Of IWorkbook) = AddressOf UseNamesInFormulas
         Public Shared CreateNamedFormulasAction As Action(Of IWorkbook) = AddressOf CreateNamedFormulas
         Public Shared UseFunctionsInFormulasAction As Action(Of IWorkbook) = AddressOf UseFunctionsInFormulas
         Public Shared CreateSharedAndArrayFormulasAction As Action(Of IWorkbook) = AddressOf CreateSharedAndArrayFormulas
-        #End Region
+        Public Shared CreateDynamicArrayFormulasAction As Action(Of IWorkbook) = AddressOf CreateDynamicArrayFormulas
+
+#End Region
 
         Private Shared Sub UseConstantsAndCalculationOperatorsInFormulas(ByVal workbook As IWorkbook)
             workbook.BeginUpdate()
@@ -28,10 +29,10 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Range("A1:B2").Alignment.Horizontal = SpreadsheetHorizontalAlignment.Center
                 worksheet.Cells("A2").Value = "'= (1+5)*6"
 
-'                #Region "#ConstantsAndCalculationOperators"
+                '                #Region "#ConstantsAndCalculationOperators"
                 ' Use constants and calculation operators in a formula.
                 workbook.Worksheets(0).Cells("B2").Formula = "= (1+5)*6"
-'                #End Region ' #ConstantsAndCalculationOperators
+                '                #End Region ' #ConstantsAndCalculationOperators
             Finally
                 workbook.EndUpdate()
             End Try
@@ -60,7 +61,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Range("A1:D1").FillColor = Color.LightGray
                 worksheet.Range("A1:D11").Alignment.Horizontal = SpreadsheetHorizontalAlignment.Center
 
-'                #Region "#R1C1ReferencesInFormulas"
+                '                #Region "#R1C1ReferencesInFormulas"
                 ' Switch on the R1C1 reference style in a workbook.
                 workbook.DocumentSettings.R1C1ReferenceStyle = True
 
@@ -71,7 +72,7 @@ Namespace SpreadsheetControl_WPF_API
                 ' Specify a formula with absolute R1C1 references 
                 ' to add values contained in cells A2 through A11.
                 worksheet.Cells("D3").Formula = "=SUM(R2C1:R11C1)"
-'                #End Region ' #R1C1ReferencesInFormulas
+                '                #End Region ' #R1C1ReferencesInFormulas
             Finally
                 workbook.EndUpdate()
             End Try
@@ -112,7 +113,7 @@ Namespace SpreadsheetControl_WPF_API
 
                 ' Create a formula that sums up the values of all cells included in the specified named range.
                 worksheet.Cells("F3").Formula = "= SUM(myRange)"
-'                #End Region ' #NamesInFormulas
+                '                #End Region ' #NamesInFormulas
             Finally
                 workbook.EndUpdate()
             End Try
@@ -140,7 +141,7 @@ Namespace SpreadsheetControl_WPF_API
                 workbook.Worksheets(1).Cells("B3").Value = "'=2*Sheet1!Range_Sum"
                 workbook.Worksheets(1).Cells("B4").Value = "'=Range_DoubleSum + 100"
 
-'                #Region "#NamedFormulas"
+                '                #Region "#NamedFormulas"
                 Dim worksheet1 As Worksheet = workbook.Worksheets("Sheet1")
                 Dim worksheet2 As Worksheet = workbook.Worksheets("Sheet2")
 
@@ -156,7 +157,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet2.Cells("C2").Formula = "=Sheet1!Range_Sum"
                 worksheet2.Cells("C3").Formula = "=Range_DoubleSum"
                 worksheet2.Cells("C4").Formula = "=Range_DoubleSum + 100"
-'                #End Region ' #NamedFormulas
+                '                #End Region ' #NamedFormulas
 
                 workbook.Worksheets.ActiveWorksheet = workbook.Worksheets("Sheet2")
             Finally
@@ -189,7 +190,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Range("A1:C1").FillColor = Color.LightGray
                 worksheet.Range("A1:C7").Alignment.Horizontal = SpreadsheetHorizontalAlignment.Left
 
-'                #Region "#FunctionsInFormulas"
+                '                #Region "#FunctionsInFormulas"
                 ' If the number in cell A2 is less than 10, the formula returns "Normal" 
                 ' and this text is displayed in cell C2. Otherwise, cell C2 displays "Excess".
                 worksheet.Cells("C2").Formula = "=IF(A2<10, ""Normal"", ""Excess"")"
@@ -211,7 +212,7 @@ Namespace SpreadsheetControl_WPF_API
 
                 ' Convert the specified text to uppercase.
                 worksheet.Cells("C7").Formula = "=UPPER(""formula"")"
-'                #End Region ' #FunctionsInFormulas
+                '                #End Region ' #FunctionsInFormulas
             Finally
                 workbook.EndUpdate()
             End Try
@@ -232,7 +233,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.MergeCells(worksheet.Range("C1:D1"))
                 worksheet.Range("C1:D1").Value = "Use Array Formulas:"
 
-'                #Region "#SharedFormulas"
+                '                #Region "#SharedFormulas"
                 worksheet.Cells("A2").Value = 1
 
                 ' Use the shared formula in the "A3:A11" range of cells.
@@ -240,13 +241,13 @@ Namespace SpreadsheetControl_WPF_API
 
                 ' Use the shared formula in the "B2:B11" range of cells.
                 worksheet.Range("B2:B11").Formula = "=A2+2"
-'                #End Region ' #SharedFormulas
+                '                #End Region ' #SharedFormulas
 
-'                #Region "#ArrayFormulas"
+                '                #Region "#ArrayFormulas"
                 ' Create an array formula that multiplies values contained in the cell range A2 through A11 
                 ' by the corresponding cells in the range B2 through B11, 
                 ' and displays the results in cells C2 through C11.
-                worksheet.Range.FromLTRB(2,1,2,10).ArrayFormula = "=A2:A11*B2:B11"
+                worksheet.Range.FromLTRB(2, 1, 2, 10).ArrayFormula = "=A2:A11*B2:B11"
 
                 ' Create an array formula that multiplies values contained in the cell range C2 through C11 by 2
                 ' and displays the results in cells D2 through D11.
@@ -261,12 +262,35 @@ Namespace SpreadsheetControl_WPF_API
                 If worksheet.Cells("C13").HasArrayFormula Then
                     Dim af As String = worksheet.Cells("C13").ArrayFormula
                     worksheet.Cells("C13").GetArrayFormulaRange().ArrayFormula = String.Empty
-                    worksheet.Range.FromLTRB(2,1,2,10).ArrayFormula = af
+                    worksheet.Range.FromLTRB(2, 1, 2, 10).ArrayFormula = af
                 End If
-'                #End Region ' #ArrayFormulas
+                '                #End Region ' #ArrayFormulas
             Finally
                 workbook.EndUpdate()
             End Try
+        End Sub
+
+        Private Shared Sub CreateDynamicArrayFormulas(ByVal workbook As IWorkbook)
+            workbook.BeginUpdate()
+            Try
+                '				#Region "#DynamicFormulas"
+                Dim worksheet As Worksheet = workbook.Worksheets(0)
+
+                worksheet.Range("A1").ColumnWidthInCharacters = 20
+                worksheet.Range("A1").Alignment.Horizontal = SpreadsheetHorizontalAlignment.Center
+                worksheet.Range("A1").FillColor = Color.LightGray
+
+                worksheet.Range("A1").Value = "Dynamic Array Formulas:"
+
+
+                ' Insert dynamic array formulas
+                worksheet("A2").DynamicArrayFormulaInvariant = "={""Red"",""Green"",""Orange"",""Blue""}"
+                worksheet.DynamicArrayFormulas.Add(worksheet("B1"), "=LEN(A2:D2)")
+                '				#End Region ' #DynamicFormulas
+            Finally
+                workbook.EndUpdate()
+            End Try
+
         End Sub
     End Class
 End Namespace

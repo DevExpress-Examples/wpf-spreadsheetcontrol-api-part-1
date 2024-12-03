@@ -1,5 +1,5 @@
-﻿Imports System
-Imports System.Drawing
+﻿Imports System.Drawing
+Imports System.IO
 Imports DevExpress.Spreadsheet
 
 Namespace SpreadsheetControl_WPF_API
@@ -17,6 +17,7 @@ Namespace SpreadsheetControl_WPF_API
         Public Shared AddCommentAction As Action(Of IWorkbook) = AddressOf AddComment
         Public Shared CopyCellDataAndStyleAction As Action(Of IWorkbook) = AddressOf CopyCellDataAndStyle
         Public Shared MergeAndSplitCellsAction As Action(Of IWorkbook) = AddressOf MergeAndSplitCells
+        Public Shared PlaceImageInCellAction As Action(Of IWorkbook) = AddressOf PlaceImageInCell
         Public Shared ClearCellsAction As Action(Of IWorkbook) = AddressOf ClearCells
 #End Region
         Private Shared Sub CreateSimpleAndComplexRanges(ByVal workbook As IWorkbook)
@@ -104,7 +105,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Columns("B").WidthInCharacters = 20
                 worksheet.Range("A1:B8").Alignment.Horizontal = SpreadsheetHorizontalAlignment.Left
 
-'                #Region "#CellValue"
+                '                #Region "#CellValue"
                 ' Add data of different types to cells.
                 worksheet.Cells("B1").Value = Date.Now
                 worksheet.Cells("B2").Value = Math.PI
@@ -117,7 +118,7 @@ Namespace SpreadsheetControl_WPF_API
 
                 ' Fill all cells in the range with 10.
                 worksheet.Range("B10:E10").Value = 10
-'                #End Region ' #CellValue
+                '                #End Region ' #CellValue
             Finally
                 workbook.EndUpdate()
             End Try
@@ -131,7 +132,7 @@ Namespace SpreadsheetControl_WPF_API
 
                 worksheet("A1").Value = "Cell values converted to objects:"
                 worksheet("A5").Value = "Cell values converted from objects:"
-                worksheet.Range("A1").ColumnWidthInCharacters= 31
+                worksheet.Range("A1").ColumnWidthInCharacters = 31
                 worksheet.Range("B1:D5").ColumnWidthInCharacters = 12
 
                 '                #Region "#CellValueToFromObject"
@@ -159,7 +160,7 @@ Namespace SpreadsheetControl_WPF_API
                     ' An alternative way to do this is to use the CellValue.FromObject method.
                     ' worksheet.Rows["5"][i+1].Value = CellValue.FromObject(array[i]);
                 Next i
-'                #End Region ' #CellValueToFromObject
+                '                #End Region ' #CellValueToFromObject
             Finally
                 workbook.EndUpdate()
             End Try
@@ -168,19 +169,19 @@ Namespace SpreadsheetControl_WPF_API
         Private Shared Sub CellValueFromObjectViaCustomConverter(ByVal workbook As IWorkbook)
             workbook.BeginUpdate()
             Try
-'                #Region "#CustomCellValueConverter"
+                '                #Region "#CustomCellValueConverter"
                 Dim worksheet As Worksheet = workbook.Worksheets(0)
                 Dim cell As Cell = worksheet.Cells("A1")
                 cell.FillColor = Color.Orange
                 cell.Value = CellValue.FromObject(cell.FillColor, New ColorToNameConverter())
                 ' ...
-'                #End Region ' #CustomCellValueConverter
+                '                #End Region ' #CustomCellValueConverter
             Finally
                 workbook.EndUpdate()
             End Try
         End Sub
 
-        #Region "#CustomCellValueConverter"
+#Region "#CustomCellValueConverter"
         Private Class ColorToNameConverter
             Implements ICellValueConverter
 
@@ -195,7 +196,7 @@ Namespace SpreadsheetControl_WPF_API
                 Return DirectCast(value, Color).Name
             End Function
         End Class
-        #End Region ' #CustomCellValueConverter
+#End Region ' #CustomCellValueConverter
 
         Private Shared Sub AddHyperlink(ByVal workbook As IWorkbook)
             workbook.BeginUpdate()
@@ -203,7 +204,7 @@ Namespace SpreadsheetControl_WPF_API
                 Dim worksheet As Worksheet = workbook.Worksheets(0)
                 worksheet.Range("A:C").ColumnWidthInCharacters = 12
 
-'                #Region "#AddHyperlink"
+                '                #Region "#AddHyperlink"
                 ' Create a hyperlink to a web page.
                 Dim cell As Cell = worksheet.Cells("A1")
                 worksheet.Hyperlinks.Add(cell, "http://www.devexpress.com/", True, "DevExpress")
@@ -212,7 +213,7 @@ Namespace SpreadsheetControl_WPF_API
                 Dim range As CellRange = worksheet.Range("C3:D4")
                 Dim cellHyperlink As Hyperlink = worksheet.Hyperlinks.Add(range, "Sheet2!B2:E7", False, "Select Range")
                 cellHyperlink.TooltipText = "Click Me"
-'                #End Region ' #AddHyperlink
+                '                #End Region ' #AddHyperlink
             Finally
                 workbook.EndUpdate()
             End Try
@@ -221,7 +222,7 @@ Namespace SpreadsheetControl_WPF_API
         Private Shared Sub CopyCellDataAndStyle(ByVal workbook As IWorkbook)
             workbook.BeginUpdate()
             Try
-'                #Region "#CopyCell"
+                '                #Region "#CopyCell"
                 Dim worksheet As Worksheet = workbook.Worksheets(0)
                 worksheet.Columns("A").WidthInCharacters = 32
                 worksheet.Columns("B").WidthInCharacters = 20
@@ -262,7 +263,7 @@ Namespace SpreadsheetControl_WPF_API
                 ' Copy information only about borders from the source cell to the "B8" cell.
                 worksheet.Cells("A8").Value = "Copy Borders"
                 worksheet.Cells("B8").CopyFrom(sourceCell, PasteSpecial.Borders)
-'                #End Region ' #CopyCell
+                '                #End Region ' #CopyCell
             Finally
                 workbook.EndUpdate()
             End Try
@@ -281,10 +282,34 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Cells("C3").Value = "C3"
                 worksheet.Cells("C3").FillColor = Color.LightSalmon
 
-'                #Region "#MergeCells"
+                '                #Region "#MergeCells"
                 ' Merge cells contained in the range.
                 worksheet.MergeCells(worksheet.Range("A1:C5"))
-'                #End Region ' #MergeCells
+                '                #End Region ' #MergeCells
+            Finally
+                workbook.EndUpdate()
+            End Try
+        End Sub
+
+
+        Private Shared Sub PlaceImageInCell(ByVal workbook As IWorkbook)
+            workbook.BeginUpdate()
+            Try
+                '				#Region "#PlaceImageInCell"
+                Dim imageBytes() As Byte = File.ReadAllBytes("Documents\x-spreadsheet.png")
+                Dim imageStream As New MemoryStream(imageBytes)
+
+                Dim worksheet As Worksheet = workbook.Worksheets(0)
+                worksheet.Cells("A2").ColumnWidthInCharacters = 20
+                ' Insert cell images from a stream
+                worksheet.Cells("A2").Value = imageStream
+
+                ' Specify image information
+                If worksheet.Cells("A2").Value.IsCellImage Then
+                    worksheet.Cells("A2").ImageInfo.Decorative = True
+                    worksheet.Cells("A2").ImageInfo.AlternativeText = "Image AltText"
+                End If
+                '				#End Region ' #PlaceImageInCell
             Finally
                 workbook.EndUpdate()
             End Try
@@ -323,7 +348,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet.Comments.Add(worksheet("D6"), "Author", "Cell Comment")
 
 
-'                #Region "#ClearCell"
+                '                #Region "#ClearCell"
                 ' Remove all cell information (content, formatting, hyperlinks and comments).
                 worksheet.Clear(worksheet("C2:D2"))
 
@@ -346,7 +371,7 @@ Namespace SpreadsheetControl_WPF_API
 
                 Dim commentD6 As Comment = worksheet.Comments.GetComments(worksheet("D6"))(0)
                 worksheet.Comments.Remove(commentD6)
-'                #End Region ' #ClearCell
+                '                #End Region ' #ClearCell
             Finally
                 workbook.EndUpdate()
             End Try
@@ -362,7 +387,7 @@ Namespace SpreadsheetControl_WPF_API
                 worksheet("A2").Alignment.WrapText = True
                 worksheet("E2").Alignment.WrapText = True
 
-'                #Region "#AddComment"
+                '                #Region "#AddComment"
                 ' Get the system username. 
                 Dim author As String = workbook.CurrentAuthor
 
@@ -385,7 +410,7 @@ Namespace SpreadsheetControl_WPF_API
                 ' Modify text of the copied comment.
                 Dim commentRunsE2 As CommentRunCollection = commentE2.Runs
                 commentRunsE2(1).Text = "This comment is copied from the cell " & commentedCell.GetReferenceA1()
-'                #End Region ' #AddComment
+                '                #End Region ' #AddComment
             Finally
                 workbook.EndUpdate()
             End Try

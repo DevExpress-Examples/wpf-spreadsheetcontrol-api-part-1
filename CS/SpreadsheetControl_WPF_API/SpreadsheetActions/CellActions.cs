@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DevExpress.Spreadsheet;
+using System;
 using System.Drawing;
-using DevExpress.Spreadsheet;
+using System.IO;
 
 namespace SpreadsheetControl_WPF_API
 {
-    public static class CellActions {
+    public static class CellActions
+    {
         #region Actions
         public static Action<IWorkbook> CreateSimpleAndComplexRangesAction = CreateSimpleAndComplexRanges;
         public static Action<IWorkbook> ChangeCellValueAction = ChangeCellValue;
@@ -14,6 +16,7 @@ namespace SpreadsheetControl_WPF_API
         public static Action<IWorkbook> AddCommentAction = AddComment;
         public static Action<IWorkbook> CopyCellDataAndStyleAction = CopyCellDataAndStyle;
         public static Action<IWorkbook> MergeAndSplitCellsAction = MergeAndSplitCells;
+        public static Action<IWorkbook> PlaceImageInCellAction = PlaceImageInCell;
         public static Action<IWorkbook> ClearCellsAction = ClearCells;
         #endregion
 
@@ -89,9 +92,11 @@ namespace SpreadsheetControl_WPF_API
 
         }
 
-        static void ChangeCellValue(IWorkbook workbook) {
+        static void ChangeCellValue(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 worksheet.Cells["A1"].Value = "dateTime:";
@@ -122,20 +127,23 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.Range["B10:E10"].Value = 10;
                 #endregion #CellValue
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
 
         }
 
-        static void CellValueToFromObject(IWorkbook workbook) {
+        static void CellValueToFromObject(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 worksheet["A1"].Value = "Cell values converted to objects:";
                 worksheet["A5"].Value = "Cell values converted from objects:";
-                worksheet.Range["A1"].ColumnWidthInCharacters= 31;
+                worksheet.Range["A1"].ColumnWidthInCharacters = 31;
                 worksheet.Range["B1:D5"].ColumnWidthInCharacters = 12;
 
                 #region #CellValueToFromObject
@@ -145,7 +153,7 @@ namespace SpreadsheetControl_WPF_API
                 sourceRange[1].Formula = "=PI()";
                 sourceRange[2].Value = DateTime.Now;
                 sourceRange[2].NumberFormat = "d-mmm-yy";
-                
+
                 // Get the number of cells in the range.
                 int cellCount = sourceRange.RowCount * sourceRange.ColumnCount;
 
@@ -153,26 +161,31 @@ namespace SpreadsheetControl_WPF_API
                 object[] array = new object[cellCount];
 
                 // Convert cell values to objects and add them to the array.
-                for (int i = 0; i < cellCount; i++) {
+                for (int i = 0; i < cellCount; i++)
+                {
                     array[i] = sourceRange[i].Value.ToObject();
                 }
 
                 // Convert array elements to cell values and assign them to cells in the fifth row. 
-                for (int i = 0; i < array.Length; i++) {
+                for (int i = 0; i < array.Length; i++)
+                {
                     worksheet.Rows["5"][i + 1].SetValue(array[i]);
                     // An alternative way to do this is to use the CellValue.FromObject method.
                     // worksheet.Rows["5"][i+1].Value = CellValue.FromObject(array[i]);
                 }
                 #endregion #CellValueToFromObject
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void CellValueFromObjectViaCustomConverter(IWorkbook workbook) {
+        static void CellValueFromObjectViaCustomConverter(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 #region #CustomCellValueConverter
                 Worksheet worksheet = workbook.Worksheets[0];
                 Cell cell = worksheet.Cells["A1"];
@@ -181,17 +194,21 @@ namespace SpreadsheetControl_WPF_API
                 // ...
                 #endregion #CustomCellValueConverter
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
         #region #CustomCellValueConverter
-        class ColorToNameConverter : ICellValueConverter {
-            object ICellValueConverter.ConvertToObject(CellValue value) {
+        class ColorToNameConverter : ICellValueConverter
+        {
+            object ICellValueConverter.ConvertToObject(CellValue value)
+            {
                 return null;
             }
-            CellValue ICellValueConverter.TryConvertFromObject(object value) {
+            CellValue ICellValueConverter.TryConvertFromObject(object value)
+            {
                 bool isColor = value.GetType() == typeof(Color);
                 if (!isColor)
                     return null;
@@ -200,9 +217,11 @@ namespace SpreadsheetControl_WPF_API
         }
         #endregion #CustomCellValueConverter
 
-        static void AddHyperlink(IWorkbook workbook) {
+        static void AddHyperlink(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
                 worksheet.Range["A:C"].ColumnWidthInCharacters = 12;
 
@@ -217,14 +236,17 @@ namespace SpreadsheetControl_WPF_API
                 cellHyperlink.TooltipText = "Click Me";
                 #endregion #AddHyperlink
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void CopyCellDataAndStyle(IWorkbook workbook) {
+        static void CopyCellDataAndStyle(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 #region #CopyCell
                 Worksheet worksheet = workbook.Worksheets[0];
                 worksheet.Columns["A"].WidthInCharacters = 32;
@@ -268,14 +290,17 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.Cells["B8"].CopyFrom(sourceCell, PasteSpecial.Borders);
                 #endregion #CopyCell
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void MergeAndSplitCells(IWorkbook workbook) {
+        static void MergeAndSplitCells(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 worksheet.Cells["A2"].FillColor = Color.LightGray;
@@ -291,14 +316,49 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.MergeCells(worksheet.Range["A1:C5"]);
                 #endregion #MergeCells
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }
 
-        static void ClearCells(IWorkbook workbook) {
+        static void PlaceImageInCell(IWorkbook workbook)
+        {
             workbook.BeginUpdate();
-            try {
+            try
+            {
+
+                #region #PlaceImageInCell
+                Worksheet worksheet = workbook.Worksheets[0];
+
+                byte[] imageBytes = File.ReadAllBytes(@"Documents\x-spreadsheet.png");
+                MemoryStream imageStream = new MemoryStream(imageBytes);
+
+                worksheet.Cells["A2"].ColumnWidthInCharacters = 20;
+                // Insert cell images from a stream
+                worksheet.Cells["A2"].Value = imageStream;
+
+                // Specify image information
+                if (worksheet.Cells["A2"].Value.IsCellImage)
+                {
+                    worksheet.Cells["A2"].ImageInfo.Decorative = true;
+                    worksheet.Cells["A2"].ImageInfo.AlternativeText = "Image AltText";
+                }
+                #endregion PlaceImageInCell
+
+            }
+            finally
+            {
+                workbook.EndUpdate();
+            }
+        }
+
+
+        static void ClearCells(IWorkbook workbook)
+        {
+            workbook.BeginUpdate();
+            try
+            {
                 Worksheet worksheet = workbook.Worksheets[0];
 
                 worksheet.Range["A:D"].ColumnWidthInCharacters = 30;
@@ -354,7 +414,8 @@ namespace SpreadsheetControl_WPF_API
                 worksheet.Comments.Remove(commentD6);
                 #endregion #ClearCell
             }
-            finally {
+            finally
+            {
                 workbook.EndUpdate();
             }
         }

@@ -39,6 +39,9 @@
     <None Update="Documents\Document.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Documents\x-spreadsheet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <AppDesigner Include="My Project\" />
   </ItemGroup>
   <ItemGroup>
