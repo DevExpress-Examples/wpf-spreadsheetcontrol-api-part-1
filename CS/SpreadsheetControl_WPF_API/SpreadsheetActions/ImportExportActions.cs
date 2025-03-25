@@ -17,7 +17,12 @@ namespace SpreadsheetControl_WPF_API
                 workbook.ExportToPdf(pdfFileStream);
             }
             #endregion #ExportToPdf
-            Process.Start("Documents\\Document_PDF.pdf");
+            var p = new Process();
+            p.StartInfo = new ProcessStartInfo(@"Documents\Document_PDF.pdf")
+            {
+                UseShellExecute = true
+            };
+            p.Start();
         }
     }
 }
