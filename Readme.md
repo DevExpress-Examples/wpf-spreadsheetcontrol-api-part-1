@@ -27,7 +27,7 @@ In particular, this sample introduces API used to perform the following operatio
 ## More Examples
 
 * [WPF SpreadsheetControl API - Part 2](https://github.com/DevExpress-Examples/wpf-spreadsheetcontrol-api-part-2)
-* [WPF SpreadsheetControl API - Part 3](https://github.com/DevExpress-Examples/wpf-spreadsheetcontrol-api-part-3-t289419)
+
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
 
@@ -35,3 +35,4 @@ In particular, this sample introduces API used to perform the following operatio
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->
+
