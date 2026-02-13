@@ -32,7 +32,7 @@
 <a href="https://github.com/DevExpress-Examples/wpf-spreadsheetcontrol-api-part-3-t289419">WPF SpreadsheetControl API - Part 3</a>
 <br/>
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-spreadsheetcontrol-api-part-1&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-spreadsheetcontrol-api-part-1&~~~was_helpful=no)
 
