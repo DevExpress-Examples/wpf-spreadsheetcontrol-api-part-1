@@ -16,8 +16,8 @@
 * [RowAndColumnActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/RowAndColumnActions.cs) (VB: [RowAndColumnActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/RowAndColumnActions.vb))
 * [WorksheetActions.cs](./CS/SpreadsheetControl_WPF_API/SpreadsheetActions/WorksheetActions.cs) (VB: [WorksheetActions.vb](./VB/SpreadsheetControl_WPF_API/SpreadsheetActions/WorksheetActions.vb))
 <!-- default file list end -->
-# WPF SpreadsheetControl API - Part 1
 
+# WPF SpreadsheetControl API - Part 1
 
 <p>This example demonstrates how to use the SpreadsheetControl API to programmatically manage spreadsheet documents, without the need for Microsoft Excel to be installed. <br> Double-click the action name in the Navigation Bar to run the code that illustrates the API functionality. The results are shown in the SpreadsheetControl and saved to the SavedDocument.xlsx file in the Document subfolder of the working folder.</p>
 <p>In particular, this sample introduces API properties and methods used to perform the following operations:</p>
@@ -31,6 +31,7 @@
 <br> See also:<br><a href="https://www.devexpress.com/Support/Center/p/E4944">WPF SpreadsheetControl API - Part 2</a></br>
 <br/>
 <!-- feedback -->
+
 ## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-spreadsheetcontrol-api-part-1&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-spreadsheetcontrol-api-part-1&~~~was_helpful=no)
