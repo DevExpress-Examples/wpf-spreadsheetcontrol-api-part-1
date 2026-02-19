@@ -31,7 +31,6 @@
 <br> See also:<br><a href="https://www.devexpress.com/Support/Center/p/E4944">WPF SpreadsheetControl API - Part 2</a></br>
 <br/>
 <!-- feedback -->
-
 ## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-spreadsheetcontrol-api-part-1&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-spreadsheetcontrol-api-part-1&~~~was_helpful=no)
